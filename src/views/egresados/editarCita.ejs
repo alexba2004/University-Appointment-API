@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Cita</title>
+    <!-- Agregamos Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      /* Estilos personalizados */
+      body {
+        padding-top: 50px; /* Para dejar espacio para el navbar */
+      }
+      .container {
+        max-width: 600px; /* Ancho máximo del contenido */
+      }
+      form {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sistema de Citas</a>
+      </div>
+    </nav>
+
+    <div class="container mt-5">
+      <h1>Editar Cita</h1>
+      <form action="/citas/actualizar/<%= citaId %>" method="POST">
+        <!-- Método para enviar datos por POST -->
+        <input type="hidden" name="_method" value="PUT" />
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha:</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" value="<%= cita.fecha %>" required />
+        </div>
+
+        <div class="mb-3">
+          <label for="hora" class="form-label">Hora:</label>
+          <input type="time" class="form-control" id="hora" name="hora" value="<%= cita.hora %>" required />
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-primary me-md-2">Guardar Cambios</button>
+          <a href="#" class="btn btn-secondary">Cancelar</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Agregamos Bootstrap JS y sus dependencias (jQuery y Popper.js) para el funcionamiento de algunos componentes -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
